@@ -35,9 +35,6 @@ dependencies:
   # Acelerômetro — usado para detectar o gesto de "sacudir" o aparelho
   sensors_plus: ^7.1.0
 
-  # Sensor de luminosidade ambiente — usado para adaptar o tema da interface
-  light_sensor: ^3.0.2
-
   # Cache/placeholder de imagens de notícias vindas da API
   cached_network_image: ^4.0.0
 

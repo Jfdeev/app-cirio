@@ -61,10 +61,12 @@ código do aplicativo**:
   (detectado via acelerômetro, `sensors_plus`) faz o mapa voltar
   imediatamente para a localização atual.
 - **Adaptação ao ambiente**: em Android, o app lê o sensor de luminosidade
-  do aparelho (`light_sensor`) e alterna automaticamente entre tema claro
-  e escuro conforme o ambiente fica mais escuro. Em plataformas sem esse
-  sensor (iOS, web, desktop), o app usa o brilho do sistema operacional
-  como alternativa.
+  do aparelho (`Sensor.TYPE_LIGHT`, via um `EventChannel` nativo próprio em
+  `MainActivity.kt` — os pacotes disponíveis no pub.dev para esse sensor
+  estavam desatualizados e quebravam o build com o Android Gradle Plugin
+  atual) e alterna automaticamente entre tema claro e escuro conforme o
+  ambiente fica mais escuro. Em plataformas sem esse sensor (iOS, web,
+  desktop), o app usa o brilho do sistema operacional como alternativa.
 
 ## Arquitetura
 
@@ -115,10 +117,11 @@ em `AndroidManifest.xml` e `Info.plist`. Para rodar:
   `ACCESS_FINE_LOCATION` e `ACCESS_COARSE_LOCATION`.
 - **iOS** (`ios/Runner/Info.plist`): `NSLocationWhenInUseUsageDescription`.
 
-> Observação: o sensor de luminosidade ambiente (`light_sensor`) só está
-> disponível em Android, pois o iOS não expõe uma API pública de luz
-> ambiente para apps de terceiros; no iOS o app usa o brilho do sistema
-> como alternativa (ver `AmbientLightService`).
+> Observação: o sensor de luminosidade ambiente só está disponível em
+> Android (lido nativamente em `MainActivity.kt`, sem depender de pacotes
+> de terceiros), pois o iOS não expõe uma API pública de luz ambiente para
+> apps de terceiros; no iOS o app usa o brilho do sistema como alternativa
+> (ver `AmbientLightService`).
 
 ## Sobre os campos da API
 
