@@ -1,0 +1,56 @@
+name: app_cirio
+description: >
+  Aplicativo mobile de apoio a quem participa da programação do Círio de
+  Nazaré em Belém do Pará: notícias, agenda cultural, gastronomia paraense,
+  mapa da procissão, rota até o ponto de partida e um modo de orientação
+  por bússola.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Consumo da API REST (https://cirio-belem-api.onrender.com)
+  http: ^1.6.0
+
+  # Gerenciamento de estado simples baseado em ChangeNotifier
+  provider: ^6.1.5
+
+  # Mapa (OpenStreetMap) — não exige chave de API, ideal para o projeto
+  flutter_map: ^8.3.2
+  latlong2: ^0.9.1
+
+  # Localização do usuário e cálculo de distância/rumo (bearing)
+  geolocator: ^14.0.3
+
+  # Bússola do aparelho — usada no modo de orientação
+  flutter_compass: ^0.8.1
+
+  # Acelerômetro — usado para detectar o gesto de "sacudir" o aparelho
+  sensors_plus: ^7.1.0
+
+  # Sensor de luminosidade ambiente — usado para adaptar o tema da interface
+  light_sensor: ^3.0.2
+
+  # Cache/placeholder de imagens de notícias vindas da API
+  cached_network_image: ^4.0.0
+
+  # Formatação de datas/horários vindos da API
+  intl: ^0.20.2
+
+  # Abrir apps de navegação externos a partir da tela "Como chegar"
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
